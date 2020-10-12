@@ -1,8 +1,8 @@
-const server = require('./api/server')
+const api = require('./api/')
 
 const port = process.env.PORT || 3000
 
-server.listen(port, error => {
+api.listen(port, error => {
   if (error) {
     console.error(error)
     process.exit(1)
