@@ -15,7 +15,7 @@ module.exports = {
     database: 'd889oesel9ouhk',
     host: 'ec2-50-17-197-184.compute-1.amazonaws.com',
     dialect: 'postgres',
-    defines: {
+    define: {
       underscored: true
     }
   }

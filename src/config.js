@@ -5,7 +5,7 @@ const config = {
     version: '0.0.0'
   },
   isProduction: () => {
-    return process.env.NODE_ENV === 'prod'
+    return process.env.NODE_ENV === 'production'
   }
 }
 
