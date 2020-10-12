@@ -1,0 +1,33 @@
+{
+  "name": "zeus",
+  "version": "0.0.0",
+  "description": "Zeus is the sky and thunder god, who rules as king of the gods of Mount Olympus.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmr93/zeus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rmr93/zeus/issues"
+  },
+  "homepage": "https://github.com/rmr93/zeus#readme",
+  "devDependencies": {
+    "db-migrate": "^0.11.11",
+    "eslint": "^7.11.0",
+    "husky": "^4.3.0",
+    "jest": "^26.5.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "db-migrate-pg": "^1.2.2",
+    "express": "^4.17.1"
+  }
+}
