@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const config = require('../config')
+require('dotenv').config()
 
 const server = express()
 
@@ -11,6 +12,6 @@ server.get('/', function (req, res) {
   res.json(config.app)
 })
 
-module.exports = server
-
 // TODO: Verify authentication
+
+module.exports = server
