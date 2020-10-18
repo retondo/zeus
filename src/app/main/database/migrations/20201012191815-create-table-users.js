@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    return queryInterface.createTable('users', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV1,
@@ -13,10 +13,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: Sequelize.STRING,
+      email: {
+        type: Sequelize.STRING,
+        unique: true,
+      },
       cpf: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       birthday: {
         type: Sequelize.DATEONLY,
@@ -24,6 +28,7 @@ module.exports = {
       },
       phone: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       member: {
         type: Sequelize.BOOLEAN,
@@ -41,7 +46,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       }
-    });
+    })
   },
 
   down: async (queryInterface, Sequelize) => {

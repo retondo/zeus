@@ -10,10 +10,10 @@ module.exports = {
     }
   },
   production: {
-    username: 'rgqjvwpbujcujh',
-    password: 'ef62e266a794e8e2e956f4e54332db3064e5d5a8a946273ebbb1588fa2d26da3',
-    database: 'd889oesel9ouhk',
-    host: 'ec2-50-17-197-184.compute-1.amazonaws.com',
+    username: 'naycrcfwljhyar',
+    password: 'f72a00c704fab7c8c96ed91e733f78e95e386513195f950d4c9464bb475f2abd',
+    database: 'dcfv4rgs58rbr0',
+    host: 'ec2-3-214-46-194.compute-1.amazonaws.com',
     dialect: 'postgres',
     define: {
       underscored: true

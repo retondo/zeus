@@ -4,7 +4,7 @@ const config = require('../config')
 const routes = require('./routes')
 
 require('dotenv').config()
-require('../database')
+require('../app/main/database')
 
 const api = express()
 
