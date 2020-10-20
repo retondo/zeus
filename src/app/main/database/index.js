@@ -13,4 +13,12 @@ for (const model in models) {
   }
 }
 
+for (const model in models) {
+  if (models.hasOwnProperty(model)) {
+    if (models[model].associate) {
+      models[model].associate(sequelize.models)
+    }
+  }
+}
+
 module.exports = sequelize

@@ -5,9 +5,19 @@ module.exports = {
     return queryInterface.createTable('users', {
       id: {
         type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV1,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         allowNull: false,
+      },
+      account_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'accounts',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       name: {
         type: Sequelize.STRING,

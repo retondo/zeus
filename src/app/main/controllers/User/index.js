@@ -5,8 +5,10 @@ const ErrorHandler = require('../../../core/errorHanlder')
 class UserController {
   async create(req, res) {
     try {
-      const createdUser = await User.create(req.body)
-      res.status(201).json(createdUser)
+      let createdUser = await User.create(req.body)
+      createdUser = createdUser.toJSON()
+      delete createdUser.password
+      res.status(201).send(createdUser)
     } catch (err) {
       ErrorHandler.responseWithError(res, err)
     }
@@ -14,11 +16,12 @@ class UserController {
 
   async findOne(req, res) {
     try {
-      const user = await User.findByPk(req.params.id)
-      if (!user) {
-        return res.status(404)
-      }
-      return res.status(200).json(user)
+      let user = await User.findByPk(req.params.id)
+      if (!user) { return res.status(404) }
+
+      user = user.toJSON()
+      delete user.password
+      return res.status(200).send(user)
     } catch (err) {
       ErrorHandler.responseWithError(res, err)
     }

@@ -1,3 +1,4 @@
 module.exports = {
-  UserController: require('./User')
+  UserController: require('./User'),
+  AccountController: require('./Account')
 }

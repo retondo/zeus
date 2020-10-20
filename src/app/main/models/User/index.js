@@ -76,6 +76,10 @@ class User extends Model {
       sequelize
     })
   }
+
+  static associate(models) {
+    this.belongsTo(models.Account, { foreignKey: 'account_id', as: 'account' })
+  }
 }
 
 module.exports = User
