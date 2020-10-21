@@ -1,7 +1,8 @@
 const express = require('express')
 const {
   UserController,
-  AccountController
+  AccountController,
+  EventController
 } = require('../app/main/controllers')
 
 const routes = express.Router()
@@ -13,5 +14,9 @@ routes.get('/users/:id', UserController.findOne);
 // Accounts
 routes.post('/accounts', AccountController.create);
 routes.get('/accounts/:id', AccountController.findOne);
+
+// Events
+routes.post('/events', EventController.create);
+routes.get('/events/:id', EventController.findOne);
 
 module.exports = routes
