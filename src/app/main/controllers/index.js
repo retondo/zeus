@@ -1,5 +1,6 @@
 module.exports = {
   UserController: require('./User/'),
   AccountController: require('./Account/'),
-  EventController: require('./Event/')
+  EventController: require('./Event/'),
+  ReservationController: require('./Reservation/'),
 }
