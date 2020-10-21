@@ -36,16 +36,19 @@ module.exports = {
         type: Sequelize.DATEONLY,
         allowNull: false,
       },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
+      phone: Sequelize.STRING,
       member: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
         allowNull: false,
       },
       created_at: {
