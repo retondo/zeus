@@ -44,7 +44,7 @@ class User extends Model {
           }
         }
       },
-      birthday: {
+      birthdate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
