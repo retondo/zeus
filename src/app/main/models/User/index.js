@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const cpf = require('@fnando/cpf/commonjs')
+const bcrypt = require('bcrypt')
 
 class User extends Model {
   static init(sequelize) {
@@ -50,7 +51,7 @@ class User extends Model {
         validate: {
           isDate: {
             args: [true],
-            msg: 'Should be a valid date only',
+            msg: 'Should be a valid date',
           }
         }
       },
@@ -71,6 +72,11 @@ class User extends Model {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value) {
+          const salt = bcrypt.genSaltSync()
+          const hashedPwd = bcrypt.hashSync(value, salt)
+          this.setDataValue('password', hashedPwd)
+        }
       },
       admin: {
         type: DataTypes.BOOLEAN,
