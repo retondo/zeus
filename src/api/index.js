@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const config = require('../config')
-const routes = require('./routes')
+const auth = require('../authentication/auth')
+const authenticatedRoutes = require('./routes/authenticated')
+const unauthenticatedRoutes = require('./routes/unauthenticated')
 
 require('dotenv').config()
 require('../app/main/database')
@@ -15,8 +17,14 @@ api.get('/', function (req, res) {
   res.json(config.app)
 })
 
-// TODO: Verify authentication
+api.use(unauthenticatedRoutes)
 
-api.use(routes)
+// Authenticated routes
+api.use(auth.authenticationRequired)
+api.use(authenticatedRoutes)
+
+api.on('NotFound', (req, res, err) =>
+  res.status(404).send({ code: 'ResourceNotFound' })
+)
 
 module.exports = api
