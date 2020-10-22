@@ -23,6 +23,17 @@ class AccountController {
       ErrorHandler.responseWithError(res, err)
     }
   }
+
+  async findAll(req, res) {
+    try {
+      const accounts = await Account.findAll()
+      return res.status(200).send({
+        items: accounts
+      })
+    } catch (err) {
+      ErrorHandler.responseWithError(res, err)
+    }
+  }
 }
 
 module.exports = new AccountController()

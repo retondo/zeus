@@ -3,25 +3,34 @@ const ErrorHandler = require('../../../core/errorHanlder')
 // const Params = require('../../core/params')
 
 class UserController {
-  async create(req, res) {
+  async findOne(req, res) {
     try {
-      let createdUser = await User.create(req.body)
-      createdUser = createdUser.toJSON()
-      delete createdUser.password
-      res.status(201).send(createdUser)
+      const user = await User.findByPk(req.params.id, {
+        attributes: {
+          exclude: ['password']
+        }
+      })
+
+      if (!user) { return res.status(404) }
+
+      return res.status(200).json(user)
     } catch (err) {
       ErrorHandler.responseWithError(res, err)
     }
   }
 
-  async findOne(req, res) {
+  async findAll(req, res) {
     try {
-      let user = await User.findByPk(req.params.id)
-      if (!user) { return res.status(404) }
+      console.log('authenticatedUser: ', req.authenticatedUser)
+      const users = await User.findAll({
+        attributes: {
+          exclude: ['password']
+        }
+      })
 
-      user = user.toJSON()
-      delete user.password
-      return res.status(200).send(user)
+      return res.status(200).send({
+        items: users
+      })
     } catch (err) {
       ErrorHandler.responseWithError(res, err)
     }
