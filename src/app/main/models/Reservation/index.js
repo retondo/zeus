@@ -26,7 +26,6 @@ class Reservation extends Model {
     this.belongsTo(models.Account, { foreignKey: 'account_id', as: 'account' })
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
     this.belongsTo(models.Event, { foreignKey: 'event_id', as: 'event' })
-    this.belongsTo(models.User, { foreignKey: 'approved_by', as: 'approvedBy' })
   }
 }
 

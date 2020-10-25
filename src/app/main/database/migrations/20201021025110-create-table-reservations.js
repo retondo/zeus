@@ -39,16 +39,6 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      approved_by: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      approved_at: Sequelize.DATE,
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

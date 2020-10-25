@@ -37,18 +37,8 @@ module.exports = {
         allowNull: false,
       },
       phone: Sequelize.STRING,
-      member: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
-      },
       password: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
         allowNull: false,
       },
       created_at: {

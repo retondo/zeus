@@ -65,10 +65,6 @@ class User extends Model {
           }
         }
       },
-      member: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -77,11 +73,6 @@ class User extends Model {
           const hashedPwd = bcrypt.hashSync(value, salt)
           this.setDataValue('password', hashedPwd)
         }
-      },
-      admin: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
       }
     }, {
       sequelize
