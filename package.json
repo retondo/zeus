@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "start-dev": "nodemon",
+    "start-dev": "nodemon -e js,gql",
     "recreate-db": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npm run migrate-db && npm run seed-db",
     "migrate-db": "npx sequelize-cli db:migrate",
     "seed-db": "npx sequelize-cli db:seed:all",
@@ -32,10 +32,14 @@
   },
   "dependencies": {
     "@fnando/cpf": "^1.0.2",
+    "@graphql-tools/load-files": "^6.2.4",
+    "@graphql-tools/merge": "^6.2.5",
+    "apollo-server": "^2.18.2",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "graphql": "^15.3.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
