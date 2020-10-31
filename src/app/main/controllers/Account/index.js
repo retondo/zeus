@@ -34,6 +34,24 @@ class AccountController {
       ErrorHandler.responseWithError(res, err)
     }
   }
+
+  async update(req, res) {
+    try {
+      const account = await Account.findByPk(req.params.id)
+      if (!account) {
+        return res.status(404).send({
+          errors: [{
+            code: 'ResourceNotFound',
+            message: 'Account not found'
+          }]
+        })
+      }
+      const updatedAccount = await account.update(req.body, { returning: true })
+      return res.status(200).json(updatedAccount)
+    } catch (err) {
+      ErrorHandler.responseWithError(res, err)
+    }
+  }
 }
 
 module.exports = new AccountController()
