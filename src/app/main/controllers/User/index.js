@@ -35,6 +35,24 @@ class UserController {
       ErrorHandler.responseWithError(res, err)
     }
   }
+
+  async update(req, res) {
+    try {
+      const user = await User.findByPk(req.params.id)
+      if (!user) {
+        return res.status(404).send({
+          errors: [{
+            code: 'ResourceNotFound',
+            message: 'User not found'
+          }]
+        })
+      }
+      const updatedUser = await user.update(req.body, { returning: true })
+      return res.status(200).json(updatedUser)
+    } catch (err) {
+      ErrorHandler.responseWithError(res, err)
+    }
+  }
 }
 
 module.exports = new UserController()

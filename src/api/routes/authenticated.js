@@ -14,6 +14,7 @@ authenticatedRoutes.put('/accounts/:id', AccountController.update);
 // Users
 authenticatedRoutes.get('/users', UserController.findAll);
 authenticatedRoutes.get('/users/:id', UserController.findOne);
+authenticatedRoutes.put('/users/:id', UserController.update);
 
 // Events
 authenticatedRoutes.post('/events', EventController.create);
