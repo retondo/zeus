@@ -13,7 +13,7 @@ module.exports = {
     }
 
     const [ scheme, tokenHash ] = splitedToken
-    if (!/^Bearer$/.test(scheme)) {
+    if (scheme.indexOf('Bearer') !== 0) {
       return res.status(401).send({ message: 'Invalid token' })
     }
 
