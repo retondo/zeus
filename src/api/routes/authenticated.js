@@ -2,21 +2,25 @@ const express = require('express')
 const {
   UserController,
   EventController,
+  AccountController,
   ReservationController,
 } = require('../../app/main/controllers')
 
-const unauthenticatedRoutes = express.Router()
+const authenticatedRoutes = express.Router()
+
+// Accounts
+authenticatedRoutes.put('/accounts/:id', AccountController.update);
 
 // Users
-unauthenticatedRoutes.get('/users', UserController.findAll);
-unauthenticatedRoutes.get('/users/:id', UserController.findOne);
+authenticatedRoutes.get('/users', UserController.findAll);
+authenticatedRoutes.get('/users/:id', UserController.findOne);
 
 // Events
-unauthenticatedRoutes.post('/events', EventController.create);
-unauthenticatedRoutes.get('/events/:id', EventController.findOne);
+authenticatedRoutes.post('/events', EventController.create);
+authenticatedRoutes.get('/events/:id', EventController.findOne);
 
 // Reservations
-unauthenticatedRoutes.post('/reservations', ReservationController.create);
-unauthenticatedRoutes.get('/reservations/:id', ReservationController.findOne);
+authenticatedRoutes.post('/reservations', ReservationController.create);
+authenticatedRoutes.get('/reservations/:id', ReservationController.findOne);
 
-module.exports = unauthenticatedRoutes
+module.exports = authenticatedRoutes

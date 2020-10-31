@@ -4,15 +4,15 @@ const {
   AuthenticationController
 } = require('../../app/main/controllers')
 
-const authenticatedRoutes = express.Router()
+const unauthenticatedRoutes = express.Router()
 
 // Authentication
-authenticatedRoutes.post('/register', AuthenticationController.register);
-authenticatedRoutes.post('/authenticate', AuthenticationController.authenticate);
+unauthenticatedRoutes.post('/register', AuthenticationController.register);
+unauthenticatedRoutes.post('/authenticate', AuthenticationController.authenticate);
 
 // Accounts
-authenticatedRoutes.post('/accounts', AccountController.create);
-authenticatedRoutes.get('/accounts', AccountController.findAll);
-authenticatedRoutes.get('/accounts/:id', AccountController.findOne);
+unauthenticatedRoutes.post('/accounts', AccountController.create);
+unauthenticatedRoutes.get('/accounts', AccountController.findAll);
+unauthenticatedRoutes.get('/accounts/:id', AccountController.findOne);
 
-module.exports = authenticatedRoutes
+module.exports = unauthenticatedRoutes
