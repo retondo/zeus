@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node src/index.js",
     "start-dev": "nodemon",
+    "recreate-db": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npm run migrate-db && npm run seed-db",
+    "migrate-db": "npx sequelize-cli db:migrate",
+    "seed-db": "npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -21,6 +24,7 @@
   "homepage": "https://github.com/rmr93/zeus#readme",
   "devDependencies": {
     "eslint": "^7.11.0",
+    "faker": "^5.1.0",
     "husky": "^4.3.0",
     "jest": "^26.5.3",
     "nodemon": "^2.0.4",
