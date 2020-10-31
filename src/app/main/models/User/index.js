@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const cpf = require('@fnando/cpf/commonjs')
-const bcrypt = require('bcrypt')
+const authentication = require('../../../../authentication/')
 
 class User extends Model {
   static init(sequelize) {
@@ -73,9 +73,8 @@ class User extends Model {
         type: DataTypes.STRING,
         allowNull: false,
         set(value) {
-          const salt = bcrypt.genSaltSync()
-          const hashedPwd = bcrypt.hashSync(value, salt)
-          this.setDataValue('password', hashedPwd)
+          const encryptedPwd = authentication.encryptPassword(value)
+          this.setDataValue('password', encryptedPwd)
         }
       },
       admin: {

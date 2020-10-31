@@ -10,7 +10,7 @@ class AuthenticationController {
 
       if (userExists) {
         return res.status(400).send({
-          code: 'ResourceNotFound',
+          code: 'ResourceAlreadyExists',
           message: 'User already exists'
         })
       }
